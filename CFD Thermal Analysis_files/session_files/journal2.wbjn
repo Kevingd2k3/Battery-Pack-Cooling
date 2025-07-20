@@ -1,0 +1,139 @@
+# encoding: utf-8
+# 2022 R1
+SetScriptVersion(Version="22.1.217")
+system1 = GetSystem(Name="FFF")
+results1 = system1.GetContainer(ComponentName="Results")
+results1.Edit()
+results1.SendCommand(Command="""DATA READER:
+Timestep Match Criterion = Same Step
+Timestep Sync Mode = By Time Value
+Timevalue Match Criterion = Same Value
+END
+ANIMATION: ANIMATION
+TimeAnim Viewer Animation = Off
+TimeAnim Viewer Animation Type = Sweep
+TimeAnim Object List = 
+TimeAnim Control Case = Case FFF
+TimeAnim Control Variable = Timestep
+TimeAnim Speed Control = Off
+TimeAnim Frame Interval = All Timesteps
+TimeAnim Frame Spacing = Equal In Time
+TimeAnim Number Of Frames = 21
+TimeAnim Timestep Interval = 2
+TimeAnim Specify Range = Off
+TimeAnim MPEG Filename = C:/Users/KEVIN/Documents/FFF.wmv
+TimeAnim Save MPEG = Off
+TimeAnim Looping Cycles = 1
+Video Format = wmv
+END""")
+results1.SendCommand(Command="""ANIMATION:ANIMATION
+QAnim MPEG Filename = C:/Users/KEVIN/Documents/FFF.wmv
+QAnim Save MPEG = Off
+QAnim Looping = Bounce
+QAnim Looping Cycles = 1
+Video Format = wmv
+
+END""")
+results1.SendCommand(Command="""ANIMATION: ANIMATION
+QAnim Object List = /STREAMLINE:Streamline 1
+QAnim Frames = 100
+QAnim MPEG Filename = C:/Users/KEVIN/Documents/FFF.wmv
+QAnim Save MPEG = Off
+QAnim Looping = Bounce
+QAnim Looping Cycles = 1
+Video Format = wmv
+END
+>animate quickAnimate""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /VOLUME RENDERING:Volume Rendering 1, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>hide /WIREFRAME:Wireframe, view=/VIEW:View 1""")
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+mesh1 = system1.GetContainer(ComponentName="Mesh")
+mesh1.Edit()
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /WIREFRAME:Wireframe, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>hide /DEFAULT LEGEND:Default Legend View 1, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>hide /WIREFRAME:Wireframe, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /WIREFRAME:Wireframe, view=/VIEW:View 1""")
+results1.SendCommand(Command="""ANIMATION: ANIMATION
+QAnim Object List = /STREAMLINE:Streamline 1
+QAnim Frames = 100
+QAnim MPEG Filename = C:/Users/KEVIN/Documents/FFF.wmv
+QAnim Save MPEG = Off
+QAnim Looping = Bounce
+QAnim Looping Cycles = 1
+Video Format = wmv
+END
+>animate quickAnimate""")
+results1.SendCommand(Command="> autolegend plot=/VOLUME RENDERING:Volume Rendering 2, view=VIEW:View 1")
+results1.SendCommand(Command="""VOLUME RENDERING:Volume Rendering 2
+Apply Instancing Transform = On
+Apply Texture = Off
+Blend Texture = On
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Use Plot Variable
+Colour Scale = Linear
+Colour Variable = Pressure
+Colour Variable Boundary Values = Conservative
+Culling Mode = No Culling
+Domain List = /DOMAIN GROUP:All Domains
+Draw Contours = Off
+Draw Faces = On
+Draw Lines = Off
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Lighting = Off
+Line Colour = 0, 0, 0
+Line Colour Mode = Default
+Line Width = 1
+Max = 0.0 [Pa]
+Min = 0.0 [Pa]
+Number of Contours = 11
+Range = Global
+Render Edge Angle = 0 [degree]
+Specular Lighting = Off
+Surface Drawing = Smooth Shading
+Texture Angle = 0
+Texture Direction = 0 , 1 , 0 
+Texture File =  
+Texture Material = Metal
+Texture Position = 0 , 0 
+Texture Scale = 1
+Texture Type = Predefined
+Tile Texture = Off
+Transform Texture = Off
+Transparency = 0.2
+Transparency Colour Map = Transparency
+Variable = Pressure
+Variable Boundary Values = Conservative
+Volume Rendering Max = 0.0 [Pa]
+Volume Rendering Min = 0.0 [Pa]
+Volume Rendering Range = Global
+Volume Rendering Scale = Linear
+Volume Resolution = 200
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /VOLUME RENDERING:Volume Rendering 2, view=/VIEW:View 1""")
+Save(Overwrite=True)

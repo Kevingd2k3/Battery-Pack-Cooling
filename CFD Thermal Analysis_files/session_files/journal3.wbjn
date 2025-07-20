@@ -1,0 +1,449 @@
+# encoding: utf-8
+# 2022 R1
+SetScriptVersion(Version="22.1.217")
+system1 = GetSystem(Name="FFF")
+results1 = system1.GetContainer(ComponentName="Results")
+results1.Edit()
+results1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.0715, 0.0325, 0.0485
+    Scale = 13.5073
+    Pan = 0, 0
+    Rotation Quaternion = 0.104281, 0.00818315, 0.0495705, 0.993277
+    
+  END
+
+END
+
+VIEW:View 1
+  Light Angle = 50, 110
+END
+
+VIEW:View 2
+  Light Angle = 50, 110
+END
+
+VIEW:View 3
+  Light Angle = 50, 110
+END
+
+VIEW:View 4
+  Light Angle = 50, 110
+END
+
+> update
+> autolegend plot=/CONTOUR:Contour 1, view=VIEW:View 1""")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:cell_wall contact_region trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:cell_wall contact_region trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:cell_wall contact_region trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:cell_wall contact_region trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:cell_wall contact_region trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command="> autolegend plot=/STREAMLINE:Streamline 2, view=VIEW:View 1")
+results1.SendCommand(Command="""STREAMLINE:Streamline 2
+Absolute Tolerance = 0.0 [m]
+Apply Instancing Transform = On
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Use Plot Variable
+Colour Scale = Linear
+Colour Variable = Velocity
+Colour Variable Boundary Values = Conservative
+Cross Periodics = On
+Culling Mode = No Culling
+Domain List = /DOMAIN GROUP:All Domains
+Draw Contours = Off
+Draw Faces = On
+Draw Lines = Off
+Draw Streams = On
+Draw Symbols = Off
+Grid Tolerance = 0.01
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Lighting = On
+Line Width = 1
+Locator Sampling Method = Equally Spaced
+Max = 0.0 [m s^-1]
+Maximum Number of Items = 25
+Min = 0.0 [m s^-1]
+Number of Contours = 11
+Number of Samples = 25
+Number of Sides = 8
+Range = Global
+Reduction Factor = 1.0
+Reduction or Max Number = Max Number
+Sample Spacing = 0.1
+Sampling Aspect Ratio = 1
+Sampling Grid Angle = 0 [degree]
+Seed Point Type = Equally Spaced Samples
+Simplify Geometry = Off
+Specular Lighting = On
+Stream Drawing Mode = Line
+Stream Initial Direction = 0 , 0 , 0 
+Stream Size = 1.0
+Stream Symbol = Ball
+Streamline Direction = Forward
+Streamline Maximum Periods = 20
+Streamline Maximum Segments = 10000
+Streamline Maximum Time = 0.0 [s]
+Streamline Periodic Time Interval = -1 [s]
+Streamline Type = 3D Streamline
+Streamline Width = 2
+Surface Drawing = Smooth Shading
+Surface Streamline Direction = Forward and Backward
+Symbol Size = 1.0
+Symbol Start Time = 10.0 [s]
+Symbol Stop Time = -10.0 [s]
+Symbol Time Interval = 1.0 [s]
+Tolerance Mode = Grid Relative
+Transparency = 0.0
+Variable = Velocity
+Variable Boundary Values = Conservative
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /STREAMLINE:Streamline 2, view=/VIEW:View 1""")
+results1.SendCommand(Command="""STREAMLINE:Streamline 2
+Absolute Tolerance = 0.0 [m]
+Apply Instancing Transform = On
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Use Plot Variable
+Colour Scale = Linear
+Colour Variable = Velocity
+Colour Variable Boundary Values = Conservative
+Cross Periodics = On
+Culling Mode = No Culling
+Domain List = /DOMAIN GROUP:All Domains
+Draw Contours = Off
+Draw Faces = On
+Draw Lines = Off
+Draw Streams = On
+Draw Symbols = Off
+Grid Tolerance = 0.01
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Lighting = On
+Line Width = 1
+Locator Sampling Method = Equally Spaced
+Max = 0.0 [m s^-1]
+Maximum Number of Items = 25
+Min = 0.0 [m s^-1]
+Number of Contours = 11
+Number of Samples = 25
+Number of Sides = 8
+Range = Global
+Reduction Factor = 1.0
+Reduction or Max Number = Max Number
+Sample Spacing = 0.1
+Sampling Aspect Ratio = 1
+Sampling Grid Angle = 0 [degree]
+Seed Point Type = Equally Spaced Samples
+Simplify Geometry = Off
+Specular Lighting = On
+Stream Drawing Mode = Line
+Stream Initial Direction = 0 , 0 , 0 
+Stream Size = 1.0
+Stream Symbol = Ball
+Streamline Direction = Forward
+Streamline Maximum Periods = 20
+Streamline Maximum Segments = 10000
+Streamline Maximum Time = 0.0 [s]
+Streamline Periodic Time Interval = -1 [s]
+Streamline Type = 3D Streamline
+Streamline Width = 2
+Surface Drawing = Smooth Shading
+Surface Streamline Direction = Forward and Backward
+Symbol Size = 1.0
+Symbol Start Time = 10.0 [s]
+Symbol Stop Time = -10.0 [s]
+Symbol Time Interval = 1.0 [s]
+Tolerance Mode = Grid Relative
+Transparency = 0.0
+Variable = Velocity
+Variable Boundary Values = Conservative
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /STREAMLINE:Streamline 2, view=/VIEW:View 1""")
+results1.SendCommand(Command="""STREAMLINE:Streamline 2
+Absolute Tolerance = 0.0 [m]
+Apply Instancing Transform = On
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Use Plot Variable
+Colour Scale = Linear
+Colour Variable = Velocity
+Colour Variable Boundary Values = Conservative
+Cross Periodics = On
+Culling Mode = No Culling
+Domain List = /DOMAIN GROUP:All Domains
+Draw Contours = Off
+Draw Faces = On
+Draw Lines = Off
+Draw Streams = On
+Draw Symbols = Off
+Grid Tolerance = 0.01
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Lighting = On
+Line Width = 1
+Locator Sampling Method = Equally Spaced
+Max = 0.0 [m s^-1]
+Maximum Number of Items = 25
+Min = 0.0 [m s^-1]
+Number of Contours = 11
+Number of Samples = 25
+Number of Sides = 8
+Range = Global
+Reduction Factor = 1.0
+Reduction or Max Number = Max Number
+Sample Spacing = 0.1
+Sampling Aspect Ratio = 1
+Sampling Grid Angle = 0 [degree]
+Seed Point Type = Equally Spaced Samples
+Simplify Geometry = Off
+Specular Lighting = On
+Stream Drawing Mode = Line
+Stream Initial Direction = 0 , 0 , 0 
+Stream Size = 1.0
+Stream Symbol = Ball
+Streamline Direction = Forward
+Streamline Maximum Periods = 20
+Streamline Maximum Segments = 10000
+Streamline Maximum Time = 0.0 [s]
+Streamline Periodic Time Interval = -1 [s]
+Streamline Type = 3D Streamline
+Streamline Width = 2
+Surface Drawing = Smooth Shading
+Surface Streamline Direction = Forward and Backward
+Symbol Size = 1.0
+Symbol Start Time = 10.0 [s]
+Symbol Stop Time = -10.0 [s]
+Symbol Time Interval = 1.0 [s]
+Tolerance Mode = Grid Relative
+Transparency = 0.0
+Variable = Velocity
+Variable Boundary Values = Conservative
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /STREAMLINE:Streamline 2, view=/VIEW:View 1""")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:contact_region_9 src, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:contact_region_8 trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:contact_region_9 src, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:contact_region_8 trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:contact_region_9 trg, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:fluid_zone")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:wall fluid_zone, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:wall fluid_zone, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:wall fluid_zone, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:outlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command=">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:inlet, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cell")
+results1.SendCommand(Command="""STREAMLINE:Streamline 2
+Absolute Tolerance = 0.0 [m]
+Apply Instancing Transform = On
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Use Plot Variable
+Colour Scale = Linear
+Colour Variable = Velocity
+Colour Variable Boundary Values = Conservative
+Cross Periodics = On
+Culling Mode = No Culling
+Domain List = /DOMAIN GROUP:All Domains
+Draw Contours = Off
+Draw Faces = On
+Draw Lines = Off
+Draw Streams = On
+Draw Symbols = Off
+Grid Tolerance = 0.01
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Lighting = On
+Line Width = 1
+Location List = inlet
+Locator Sampling Method = Equally Spaced
+Max = 0.0 [m s^-1]
+Maximum Number of Items = 25
+Min = 0.0 [m s^-1]
+Number of Contours = 11
+Number of Samples = 25
+Number of Sides = 8
+Range = Global
+Reduction Factor = 1.0
+Reduction or Max Number = Max Number
+Sample Spacing = 0.1
+Sampling Aspect Ratio = 1
+Sampling Grid Angle = 0 [degree]
+Seed Point Type = Equally Spaced Samples
+Simplify Geometry = Off
+Specular Lighting = On
+Stream Drawing Mode = Line
+Stream Initial Direction = 0 , 0 , 0 
+Stream Size = 1.0
+Stream Symbol = Ball
+Streamline Direction = Forward
+Streamline Maximum Periods = 20
+Streamline Maximum Segments = 10000
+Streamline Maximum Time = 0.0 [s]
+Streamline Periodic Time Interval = -1 [s]
+Streamline Type = 3D Streamline
+Streamline Width = 2
+Surface Drawing = Smooth Shading
+Surface Streamline Direction = Forward and Backward
+Symbol Size = 1.0
+Symbol Start Time = 10.0 [s]
+Symbol Stop Time = -10.0 [s]
+Symbol Time Interval = 1.0 [s]
+Tolerance Mode = Grid Relative
+Transparency = 0.0
+Variable = Velocity
+Variable Boundary Values = Conservative
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /STREAMLINE:Streamline 2, view=/VIEW:View 1""")
+results1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.0715, 0.0325, 0.0485
+    Scale = 13.5073
+    Pan = 0, 0
+    Rotation Quaternion = 0.0865973, -0.0771467, 0.0393017, 0.992473
+    
+  END
+
+END
+
+> update
+DATA READER:
+Timestep Match Criterion = Same Step
+Timestep Sync Mode = By Time Value
+Timevalue Match Criterion = Same Value
+END
+ANIMATION: ANIMATION
+TimeAnim Viewer Animation = Off
+TimeAnim Viewer Animation Type = Sweep
+TimeAnim Object List = 
+TimeAnim Control Case = Case FFF
+TimeAnim Control Variable = Timestep
+TimeAnim Speed Control = Off
+TimeAnim Frame Interval = All Timesteps
+TimeAnim Frame Spacing = Equal In Time
+TimeAnim Number Of Frames = 21
+TimeAnim Timestep Interval = 2
+TimeAnim Specify Range = Off
+TimeAnim MPEG Filename = C:/Users/KEVIN/Documents/FFF.wmv
+TimeAnim Save MPEG = Off
+TimeAnim Looping Cycles = 1
+Video Format = wmv
+END""")
+results1.SendCommand(Command="""DATA READER:
+Timestep Match Criterion = Same Step
+Timestep Sync Mode = By Time Value
+Timevalue Match Criterion = Same Value
+END
+ANIMATION: ANIMATION
+TimeAnim Viewer Animation = Off
+TimeAnim Viewer Animation Type = Sweep
+TimeAnim Object List = 
+TimeAnim Control Case = Case FFF
+TimeAnim Control Variable = Timestep
+TimeAnim Speed Control = Off
+TimeAnim Frame Interval = All Timesteps
+TimeAnim Frame Spacing = Equal In Time
+TimeAnim Number Of Frames = 21
+TimeAnim Timestep Interval = 2
+TimeAnim Specify Range = Off
+TimeAnim MPEG Filename = C:/Users/KEVIN/Documents/FFF.wmv
+TimeAnim Save MPEG = Off
+TimeAnim Looping Cycles = 1
+Video Format = wmv
+END
+>animate timestepAnimate""")
+Save(Overwrite=True)
